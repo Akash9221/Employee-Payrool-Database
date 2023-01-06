@@ -27,16 +27,31 @@ SELECT MAX(Salary) FROM Employee_Payroll WHERE Gender = 'M' GROUP BY Gender
 SELECT MIN(Salary) FROM Employee_Payroll WHERE Gender = 'M' GROUP BY Gender
 SELECT COUNT(Gender) FROM Employee_Payroll WHERE Gender = 'M' GROUP BY Gender
 --UC8 extend employee_payroll add phone, address and department
+
+ALTER TABlE Employee_Payroll ADD Department varchar(90) NOT NULL DEFAULT 'Engineer';
 ALTER TABLE Employee_Payroll ADD Phone_No BIGINT;
 ALTER TABLE Employee_Payroll ADD Address varchar(350) DEFAULT 'INDIA';
-ALTER TABlE Employee_Payroll ADD Department varchar(90) NOT NULL DEFAULT 'ENGINEER';
-SELECT * FROM Employee_Payroll;
+
 --UC9 Employee_payroll table to have Basic Pay, Deductions, Taxable Pay, Income Tax, Net Pay
-ALTER TABLE Employee_Payroll ADD Basic_Pay FLOAT NOT NULL DEFAULT 100000;
-ALTER TABLE Employee_Payroll ADD Deductions FLOAT NOT NULL DEFAULT 10000;
+ALTER TABLE Employee_Payroll ADD Basic_Pay FLOAT NOT NULL DEFAULT 20000;
+ALTER TABLE Employee_Payroll ADD Deductions FLOAT NOT NULL DEFAULT 2000;
 ALTER TABLE Employee_Payroll ADD Taxable_Pay FLOAT NOT NULL DEFAULT 1000;
 ALTER TABLE Employee_Payroll ADD Income_Tax FLOAT NOT NULL DEFAULT 100;
-ALTER TABLE Employee_Payroll ADD Net_Pay FLOAT NOT NULL DEFAULT 100000;
+ALTER TABLE Employee_Payroll ADD Net_Pay FLOAT NOT NULL DEFAULT 2000;
 SELECT * FROM Employee_Payroll;
+--UC10
+UPDATE Employee_Payroll SET Department = 'SALES' WHERE Name ='Vishal';
+INSERT INTO Employee_Payroll VALUES('Akash',3000,'2019-06-07',7864646888,'SRE','Marketing',10,10,10,10,3000);
 
+CREATE TABLE Demo_Table(
+Id int PRIMARY KEY IDENTITY(1,1));
 
+--UC11 DELETE
+DROP TABLE Demo_Table;
+--UC12
+DELETE FROM Employee_Payroll WHERE Id =4;
+--CURD
+--C=CREATE
+--U=UPDATE
+--R=RETRIVE
+--D=DELETE
